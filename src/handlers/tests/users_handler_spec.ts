@@ -4,7 +4,6 @@ import user_routes from "../users";
 import {User, UserStore} from '../../models/users'
 
 // Since we have a test database we can use that instead of mocks??
-const store = new UserStore()
 const app = express()
 app.use(express.json())
 user_routes(app)
