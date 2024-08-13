@@ -1,13 +1,5 @@
 import { User, UserStore } from "../users";
 
-function logClassMethods(classInstance: any): void {
-  const proto = Object.getPrototypeOf(classInstance);
-  const methodNames = Object.getOwnPropertyNames(proto)
-    .filter(name => typeof proto[name] === 'function' && name !== 'constructor');
-
-  console.log('Methods:', methodNames);
-}
-
 
 beforeAll(() => {
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
@@ -16,15 +8,14 @@ beforeAll(() => {
 describe("Users Store Model", () => {
   const store: UserStore = new UserStore()
   let user: User = {
-    firstName: 'firstName',
-    lastName: 'lastName',
+    firstname: 'firstName',
+    lastname: 'lastName',
     password: 'testPassword'
   }
 
   describe("User methods are defined", () => {
     it('should have an index method', () => {
       expect(store.index).toBeDefined()
-      logClassMethods(store)
     });
     it('should have a show method', () => {
       expect(store.show).toBeDefined()
@@ -35,15 +26,17 @@ describe("Users Store Model", () => {
   })
 
   describe("User methods functionality", () => {
+    it('create a new User', async () => {
+      const result = await store.create(user)
+      expect(typeof result).toEqual('object')
+    });
     it('index method should return a list of Users', async () => {
       const result = await store.index()
-      expect(result).toEqual([])
+      expect(typeof result).toEqual('object')
+    });
+    it('show method should return a single User', async () => {
+      const result = await store.show(1)
+      expect(result).toEqual({ ...user, id: 1 })
     });
   })
-
-
-  //
-  // it('store.show(id) should should return a single user', () => {
-  //     expect(store.show("1")).toBeInstanceOf(Promise<User>);
-  // });
 });
