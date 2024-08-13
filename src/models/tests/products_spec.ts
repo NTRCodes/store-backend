@@ -1,5 +1,6 @@
 import { Product, ProductStore } from '../products'
 
+//git is annoying
 describe('Product Store Model', () => {
   const store = new ProductStore()
   const product: Product = {
