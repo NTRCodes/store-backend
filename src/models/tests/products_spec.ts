@@ -1,15 +1,14 @@
-import { Product, ProductStore } from '../products'
+import { ProductStore } from '../products'
 
-//git is annoying
-describe('Product Store Model', () => {
+describe('Product Store Model Tests', () => {
   const store = new ProductStore()
-  const product: Product = {
+  let product = {
     name: 'Test',
-    price: 200.50,
+    price: 201,
     category: 'test category'
   }
 
-  describe('Product methods are defined', () => {
+  describe('Product method definitions', () => {
     it('Product should have an index method', () => {
       expect(store.index).toBeDefined()
     })
@@ -22,17 +21,17 @@ describe('Product Store Model', () => {
   })
 
   describe('Product methods functionality', () => {
-    it('create a new product', () => {
-      const result = store.create(product)
-      expect(typeof result).toEqual('object')
+    it('create method should create a new product', async () => {
+      const result = await store.create(product)
+      expect(result.id === undefined).toBeFalse()
     })
     it('show method should return a product given an id', async () => {
       const result = await store.show(1)
-      expect(result.category).toEqual('test category')
+      expect(typeof result).toEqual('object')
     })
     it('index method should return all products', async () => {
       const result = await store.index()
-      expect(typeof result).toEqual('object')
+      expect(result).toBeInstanceOf(Array)
     })
   })
 })

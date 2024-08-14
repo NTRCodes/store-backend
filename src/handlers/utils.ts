@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import jwt from 'jsonwebtoken'
 import { Request, Response } from 'express'
+import { User } from '../models/users'
 
 export const verifyAuthToken = (req: Request, res: Response, next: Function) => {
   try {
@@ -12,4 +13,16 @@ export const verifyAuthToken = (req: Request, res: Response, next: Function) => 
     res.status(401)
   }
 }
+
+export const getJWT = () => {
+  const user: User = {
+    firstname: 'firstname',
+    lastname: 'lastname',
+    password: 'password'
+  }
+
+  const token = jwt.sign({ user: user }, process.env.TOKEN_SECRET as string)
+  return token
+}
+
 

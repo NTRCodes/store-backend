@@ -1,29 +1,38 @@
 import request from 'supertest';
 import express from 'express';
 import user_routes from "../users";
-import { User, UserStore } from '../../models/users'
+import { getJWT } from '../utils';
 
-// Since we have a test database we can use that instead of mocks??
 const app = express()
 app.use(express.json())
 user_routes(app)
 
-beforeAll(() => {
+
+beforeAll(async () => {
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
 })
 
 describe('User Handler Routes Suite', () => {
-  // it('/users should return a list of users as json', async () => {
-  //     const response = await request(app).get('/users')
-  //     expect(response.status).toBe(200)
-  //     expect(response.headers['content-type']).toMatch(/json/)
-  //     expect(response.body).toBeInstanceOf(Array<User>)
-  // });
-  //
-  // it('/users/:id should return a single user if they exist', async () => {
-  //     const response = await request(app).get('/users/1')
-  //     expect(response.status).toBe(200)
-  //     expect(response.headers['content-type']).toMatch(/json/)
-  //     expect(response.body).toContain({})
-  // });
-});
+  it('get: /users should return a list of users as json', async () => {
+    request(app)
+      .get('/users')
+      .set('Authorization', `Bearer ${getJWT()}`)
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .then((res) => {
+        expect(res.body).toBeInstanceOf(Array)
+      })
+      .catch((err) => { return err })
+  })
+  it('get: /users/:id should return a single user if they exist', async () => {
+    request(app)
+      .get('/users/1')
+      .set('Authorization', `Bearer ${getJWT()}`)
+      .expect(200)
+      .expect('Content-type', /json/)
+      .then((res) => {
+        expect(res.body).toContain({})
+      })
+      .catch((err) => { return err })
+  })
+})

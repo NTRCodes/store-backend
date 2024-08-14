@@ -10,13 +10,13 @@ export type Product = {
 export class ProductStore {
   async index(): Promise<Product[]> {
     try {
-      const conn = await client.connect()
       const sql = 'SELECT * FROM products;'
+      const conn = await client.connect()
       const result = await conn.query(sql)
       conn.release()
       return result.rows
     } catch (error) {
-      throw new Error(`Cannot get users ${error}`)
+      throw new Error(`Cannot get products${error}`)
     }
   }
 
@@ -34,13 +34,13 @@ export class ProductStore {
 
   async create(product: Product): Promise<Product> {
     try {
-      const conn = await client.connect()
       const sql = 'INSERT INTO products (name, price, category) VALUES ($1, $2, $3) RETURNING *;'
+      const conn = await client.connect()
       const result = await conn.query(sql, [product.name, product.price, product.category])
       conn.release()
       return result.rows[0]
     } catch (error) {
-      throw new Error(`Could not create prodct. Error: ${error}`)
+      throw new Error(`Could not create product. Error: ${error}`)
     }
   }
 }
