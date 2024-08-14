@@ -13,11 +13,10 @@ const {
 
 console.log(`Current ENV == ${ENV}`)
 
-const client = new Pool({
+export const client = new Pool({
   host: POSTGRES_HOST,
   database: ENV === 'test' ? POSTGRES_TEST_DB : POSTGRES_DB,
   user: POSTGRES_USER,
   password: POSTGRES_PASSWORD,
 })
 
-export default client

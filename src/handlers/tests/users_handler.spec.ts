@@ -24,14 +24,25 @@ describe('User Handler Routes Suite', () => {
       })
       .catch((err) => { return err })
   })
-  it('get: /users/:id should return a single user if they exist', async () => {
+  it('get: /users/{id} should return a single user if they exist', async () => {
     request(app)
       .get('/users/1')
       .set('Authorization', `Bearer ${getJWT()}`)
       .expect(200)
-      .expect('Content-type', /json/)
+      .expect('Content-Type', /json/)
       .then((res) => {
-        expect(res.body).toContain({})
+        expect(res.body.id >= 1).toBeTrue()
+      })
+      .catch((err) => { return err })
+  })
+  it('post: /users/ should return a single user upon creation', async () => {
+    request(app)
+      .post('/users')
+      .send({ firstname: 'firstname', lastname: 'lastname', password: 'password' })
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .then((res) => {
+        expect(res.body.user.password === 'password').toBeFalse()
       })
       .catch((err) => { return err })
   })
