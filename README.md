@@ -26,8 +26,18 @@
 
   CREATE DATABASE store;
 ```
-- After creating the database run the follow command inside your terminal
+- After creating the database, use `db-migrate` to create your migration and `sql` files
+  ```bash
+  db-migrate create create-table-name --sql-file
+
+-There are a few tables you need to create:
+  - users
+  - products
+  - orders
+```
+
 ```bash
+
   db-migrate up
 ```
 
