@@ -29,7 +29,7 @@ describe("Users Store Model", () => {
       const users = await store.index()
       expect(users).toBeInstanceOf(Array)
     })
-    it('UserStore.show() returns a user given an id', async () => {
+    it('UserStore.show() returns a User given an id', async () => {
       const user = await store.show(1)
       expect(user.id).toEqual(1)
     })

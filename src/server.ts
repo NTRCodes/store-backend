@@ -3,6 +3,7 @@ import { Request, Response } from 'express'
 import bodyParser from 'body-parser'
 import user_routes from "./handlers/users";
 import product_routes from './handlers/products';
+import order_routes from './handlers/orders';
 import cors from "cors";
 
 const app: express.Application = express()
@@ -23,6 +24,7 @@ app.listen(process.env.SERVER_PORT, function () {
   console.log(`starting app on: ${address}`)
 })
 
+order_routes(app)
 user_routes(app)
 product_routes(app)
 

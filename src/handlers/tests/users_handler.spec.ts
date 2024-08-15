@@ -31,7 +31,7 @@ describe('User Handler Routes Suite', () => {
       .expect(200)
       .expect('Content-Type', /json/)
       .then((res) => {
-        expect(res.body.id >= 1).toBeTrue()
+        expect(res.body.id === 1).toBeTrue()
       })
       .catch((err) => { return err })
   })

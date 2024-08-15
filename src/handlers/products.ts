@@ -23,10 +23,10 @@ const show = async (req: Request, res: Response) => {
   }
 }
 
-const create = async (_req: Request, res: Response) => {
+const create = async (req: Request, res: Response) => {
   const product: Product = {
-    name: _req.body.name,
-    price: _req.body.price,
+    name: req.body.name,
+    price: req.body.price,
   }
   try {
     const newProduct = await store.create(product)

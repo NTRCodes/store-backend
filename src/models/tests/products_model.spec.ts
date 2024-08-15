@@ -9,26 +9,26 @@ describe('Product Store Model Tests', () => {
   }
 
   describe('Product method definitions', () => {
-    it('Product should have an index method', () => {
+    it('productStore.index() is defined', () => {
       expect(productStore.index).toBeDefined()
     })
-    it('Product should have a show method', () => {
+    it('productStore.show() is defined', () => {
       expect(productStore.show).toBeDefined()
     })
-    it('Product should have a create method', () => {
+    it('productStore.create() is defined', () => {
       expect(productStore.create).toBeDefined()
     })
   })
   describe('Product method functionalities', () => {
-    it('productStore.create() should return a new product', async () => {
+    it('productStore.create() returns a new Product', async () => {
       const newProduct = await productStore.create(product)
       expect(Object.keys(newProduct)).toBeInstanceOf(Object)
     })
-    it('show method should return a product given an id', async () => {
+    it('productStore.show() returns a Product given an id', async () => {
       const product = await productStore.show(1)
       expect(Object.keys(product)).toContain('id')
     })
-    it('index method should return all products', async () => {
+    it('productStore.index() returns a list of Products', async () => {
       const product = await productStore.index()
       expect(product).toBeInstanceOf(Array)
     })

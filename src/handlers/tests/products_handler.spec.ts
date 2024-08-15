@@ -30,11 +30,11 @@ describe('Product handler routes', () => {
       .expect(200)
       .expect('Content-Type', /json/)
       .then((res) => {
-        expect(res.body.id >= 1).toBeTrue()
+        expect(res.body.id === 1).toBeTrue()
       })
       .catch((err) => { return err })
   })
-  it('post: /products/ should return a new product', () => {
+  it('post: /products should return a new product', () => {
     request(app)
       .post('/products')
       .send({ name: 'Test', price: 201, category: 'Test category' })
