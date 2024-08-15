@@ -35,9 +35,9 @@
   - products
   - orders
 
-```bash
-- After creating all of your tables run the following command:
 
+- After creating all of your tables run the following command:
+```bash
   db-migrate up
 ```
 
