@@ -48,7 +48,7 @@ This repo contains a basic Node and Express app to get you started in constructi
   SALT_ROUNDS=10
   ENV=dev
   TOKEN_SECRET=udacity!
-
+```
 ### 5. Start the development server
 ```bash
   npm run watch
