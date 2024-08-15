@@ -27,12 +27,16 @@ This repo contains a basic Node and Express app to get you started in constructi
 - Create a new PostgreSQL database
 ```bash
   psql -U postgres
+
   CREATE DATABASE store;
+```
+- After creating the database run the follow command inside your terminal
+```bash
+  db-migrate up
 ```
 
 ### 4. Create a .env file in the root directory of the project and add the following:
   ```bash
-```
   SERVER_PORT=3000
   DB_PORT=5432
   POSTGRES_HOST=0.0.0.0
