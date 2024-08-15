@@ -36,6 +36,7 @@
   - orders
 
 ```bash
+- After creating all of your tables run the following command:
 
   db-migrate up
 ```
