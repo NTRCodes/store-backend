@@ -30,11 +30,10 @@
   ```bash
   db-migrate create create-table-name --sql-file
 
--There are a few tables you need to create:
+- There are a few tables you need to create:
   - users
   - products
   - orders
-```
 
 ```bash
 
