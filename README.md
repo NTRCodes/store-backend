@@ -26,7 +26,7 @@
 
   CREATE DATABASE store;
 ```
-- After creating the database, use `db-migrate` to create your migration and `sql` files
+- After creating the database, use `db-migrate` to create your `migration files` and `sql` files
   ```bash
   db-migrate create create-table-name --sql-file
 
