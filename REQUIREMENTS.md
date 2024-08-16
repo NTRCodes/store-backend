@@ -22,21 +22,21 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## Data Shapes
 #### Product
--  id
-- name
-- price
-- [OPTIONAL] category
+- id (serial bigint)
+- name (varchar)
+- price (decimal)
+- [OPTIONAL] category (text)
 
 #### Users
-- id
-- firstName
-- lastName
-- password
+- id (serial bigint)
+- firstname (varchar)
+- lastname (varchar)
+- password (varchar - hashed before being in the database)
 
-#### Orders
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
-- status of order (active or complete)
+#### Orders - many to many relationship with products and orders tables
+- id (serial bigint)
+- id of each product in the order ((bigint) foreign key from products table)
+- quantity of each product in the order (integer)
+- user_id ((bigint)foreign key from the user table user_id)
+- status of order (active or complete) - (varchar)
 

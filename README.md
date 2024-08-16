@@ -34,6 +34,7 @@
   - users
   - products
   - orders
+  - order_products
 
 
 - After creating all of your tables run the following command:
@@ -41,7 +42,7 @@
   db-migrate up
 ```
 
-### 4. Create a .env file in the root directory of the project and add the following:
+### 4. Create a `.env` file in the root directory of the project and add the following:
   ```bash
   SERVER_PORT=3000
   DB_PORT=5432
